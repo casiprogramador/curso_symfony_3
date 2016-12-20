@@ -15,3 +15,10 @@
 /vendor/
 /web/bundles/
 /nbproject/private/
+### NetBeans ###
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
