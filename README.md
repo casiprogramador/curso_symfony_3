@@ -5,19 +5,19 @@ Instalacion
 --------------
 Para instalar pueden seguir los siguientes pasos:
 
-1. Clonamos el proyecto
+Clonamos el proyecto
 ```
 git clone https://github.com/pmarce/curso_symfony_3.git
 ```
-2. Ingresamos al proyecto
+Ingresamos al proyecto
 ```
 cd curso_symfony_3
 ```
-3. Instalamos dependencias
+Instalamos dependencias
 ```
 composer install
 ```
-4. Ejecutamos el servidor local
+Ejecutamos el servidor local
 ```
 php bin/console server:run
 ```
