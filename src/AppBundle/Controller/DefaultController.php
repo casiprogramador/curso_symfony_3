@@ -13,6 +13,16 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {	
-		return $this->render('layout/base.html.twig');
+		return $this->render('AppBundle:Home:index.html.twig');
+    }
+	
+	/**
+     * @Route("/post/{id}", name="simple_post")
+     */
+	public function simplePost($id)
+    {	
+		return $this->render('AppBundle:Post:simple.html.twig', array(
+			'id' => $id
+		));
     }
 }
