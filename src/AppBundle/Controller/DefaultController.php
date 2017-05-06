@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Post;
 
 class DefaultController extends Controller
 {
@@ -13,16 +14,16 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {	
-		return $this->render('AppBundle:Home:index.html.twig');
+	return $this->render('AppBundle:Home:index.html.twig');
     }
 	
-	/**
+    /**
      * @Route("/post/{id}", name="simple_post")
      */
-	public function simplePost($id)
+    public function simplePost($id)
     {	
-		return $this->render('AppBundle:Post:simple.html.twig', array(
-			'id' => $id
-		));
-    }
+	return $this->render('AppBundle:Post:simple.html.twig', array(
+		'id' => $id
+	));
+    }   
 }
