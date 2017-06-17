@@ -15,10 +15,10 @@ class PostController extends Controller
     public function insertPost()
     {	
 	$post = new Post();
-        $post->setTitulo('Top Framework PHP 2017');
+        $post->setTitulo('Symfony 4 Release');
         $post->setContenido('Quisque velit nisi, pretium ut lacinia in, elementum id enim. Cras ultricies ligula sed magna dictum porta. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Sed porttitor lectus nibh. ');
-        $post->setAutor('Lalo Landa');
-        $post->setFecha(new \DateTime('2017-05-01'));
+        $post->setAutor('Landa Lalo');
+        $post->setFecha(new \DateTime('2018-06-11'));
 
         $em = $this->getDoctrine()->getManager();
 
@@ -27,5 +27,17 @@ class PostController extends Controller
         $em->flush();
 
         return new Response('Se inserto nueva entrada con ID:'.$post->getId());
+    }
+    
+    /**
+     * @Route("/get/post", name="get_post")
+     */
+    public function getAllPost()
+    {	
+	 $em = $this->getDoctrine()->getManager();
+         $repository = $em->getRepository('AppBundle:Post');
+         $posts = $repository->findAll();
+         dump($posts);
+         return new Response('Datos Tabla Post'); 
     }
 }
