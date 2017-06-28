@@ -29,15 +29,15 @@ class PostController extends Controller
         return new Response('Se inserto nueva entrada con ID:'.$post->getId());
     }
     
-    /**
+     /**
      * @Route("/get/post", name="get_post")
      */
     public function getAllPost()
     {	
-	 $em = $this->getDoctrine()->getManager();
-         $repository = $em->getRepository('AppBundle:Post');
-         $posts = $repository->findAll();
-         dump($posts);
-         return new Response('Datos Tabla Post'); 
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('AppBundle:Post');
+        $posts = $repository->findAll();
+        dump($posts);
+        return new Response('Datos Tabla Post');
     }
 }
