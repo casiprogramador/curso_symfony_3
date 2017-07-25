@@ -15,9 +15,9 @@ class PostController extends Controller
     public function insertPost()
     {	
 	$post = new Post();
-        $post->setTitulo('Symfony 4 Release');
-        $post->setContenido('Quisque velit nisi, pretium ut lacinia in, elementum id enim. Cras ultricies ligula sed magna dictum porta. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Sed porttitor lectus nibh. ');
-        $post->setAutor('Landa Lalo');
+        $post->setTitulo('New symfony 3');
+        $post->setContenido('Cras ultricies ligula sed magna dictum porta.');
+        $post->setAutor('Diego');
         $post->setFecha(new \DateTime('2018-06-11'));
 
         $em = $this->getDoctrine()->getManager();
@@ -40,4 +40,44 @@ class PostController extends Controller
          dump($posts);
          return new Response('Datos Tabla Post'); 
     }
+    
+     /**
+     * @Route("/update/post/{id}", name="update_post")
+     */
+    public function updatePost($id)
+    {	
+	$em = $this->getDoctrine()->getManager();
+        $post = $em->getRepository('AppBundle:Post')->find($id);
+        if (!$post) {
+            throw $this->createNotFoundException(
+                'El post con ID '.$productId.' no existe'
+            );
+        }
+        $post->setTitulo('Symfony 3.3 Update');
+        $post->setContenido('Donec sollicitudin molestie malesuada. Proin eget tortor risus.');
+        $post->setAutor('David Bonaparte');
+        $post->setFecha(new \DateTime('2017-07-28'));
+        
+        $em->flush();
+        
+        return new Response('Se actualizo entrada con ID:'.$id);
+    } 
+    
+    /**
+     * @Route("/delete/post/{id}", name="delete_post")
+     */
+    public function deletePost($id)
+    {	
+	$em = $this->getDoctrine()->getManager();
+        $post = $em->getRepository('AppBundle:Post')->find($id);
+        if (!$post) {
+            throw $this->createNotFoundException(
+                'El post con ID '.$productId.' no existe'
+            );
+        }
+        $em->remove($post);
+        $em->flush();
+        
+        return new Response('Se borro la entrada con ID:'.$id);
+    } 
 }
